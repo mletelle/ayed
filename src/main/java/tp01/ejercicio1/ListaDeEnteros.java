@@ -1,5 +1,5 @@
 
-package unrn.tp01.ejercicio1;
+package tp01.ejercicio1;
 
 public abstract class ListaDeEnteros {
 	
