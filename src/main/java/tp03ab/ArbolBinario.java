@@ -1,99 +1,108 @@
 package tp03ab;
 
 public class ArbolBinario<T> {
-	private T dato;
-	private ArbolBinario<T> hijoIzquierdo;   
-	private ArbolBinario<T> hijoDerecho; 
+    private T dato;
+    private ArbolBinario<T> hijoIzquierdo;
+    private ArbolBinario<T> hijoDerecho;
 
-	
-	public ArbolBinario() {
-		super();
-	}
 
-	public ArbolBinario(T dato) {
-		this.dato = dato;
-	}
+    public ArbolBinario() {
+        super();
+    }
 
-	/*
-	 * getters y setters
-	 * 
-	 */
-	public T getDato() {
-		return dato;
-	}
+    public ArbolBinario(T dato) {
+        this.dato = dato;
+    }
 
-	public void setDato(T dato) {
-		this.dato = dato;
-	}
-	
-	/**
-	 * Preguntar antes de invocar si tieneHijoIzquierdo()
-	 * @return
-	 */
-	public ArbolBinario<T> getHijoIzquierdo() {
-		return this.hijoIzquierdo;
-	}
+    /*
+     * getters y setters
+     *
+     */
+    public T getDato() {
+        return dato;
+    }
 
-	public ArbolBinario<T> getHijoDerecho() {
-		return this.hijoDerecho;
+    public void setDato(T dato) {
+        this.dato = dato;
+    }
 
-	}
+    /**
+     * Preguntar antes de invocar si tieneHijoIzquierdo()
+     *
+     * @return
+     */
+    public ArbolBinario<T> getHijoIzquierdo() {
+        return this.hijoIzquierdo;
+    }
 
-	public void agregarHijoIzquierdo(ArbolBinario<T> hijo) {
-		this.hijoIzquierdo = hijo;
-	}
+    public ArbolBinario<T> getHijoDerecho() {
+        return this.hijoDerecho;
 
-	public void agregarHijoDerecho(ArbolBinario<T> hijo) {
-		this.hijoDerecho = hijo;
-	}
+    }
 
-	public void eliminarHijoIzquierdo() {
-		this.hijoIzquierdo = null;
-	}
+    public void agregarHijoIzquierdo(ArbolBinario<T> hijo) {
+        this.hijoIzquierdo = hijo;
+    }
 
-	public void eliminarHijoDerecho() {
-		this.hijoDerecho = null;
-	}
+    public void agregarHijoDerecho(ArbolBinario<T> hijo) {
+        this.hijoDerecho = hijo;
+    }
 
-	public boolean esVacio() {
-		return this.getDato() == null && !this.tieneHijoIzquierdo() && !this.tieneHijoDerecho();
-	}
+    public void eliminarHijoIzquierdo() {
+        this.hijoIzquierdo = null;
+    }
 
-	public boolean esHoja() {
-		return (!this.tieneHijoIzquierdo() && !this.tieneHijoDerecho());
+    public void eliminarHijoDerecho() {
+        this.hijoDerecho = null;
+    }
 
-	}
+    public boolean esVacio() {
+        return this.getDato() == null && !this.tieneHijoIzquierdo() && !this.tieneHijoDerecho();
+    }
 
-	@Override
-	public String toString() {
-		return this.getDato().toString();
-	}
+    public boolean esHoja() {
+        return (!this.tieneHijoIzquierdo() && !this.tieneHijoDerecho());
 
-	 
-	public boolean tieneHijoIzquierdo() {
-		return this.hijoIzquierdo!=null;
-	}
+    }
 
-	 
-	public boolean tieneHijoDerecho() {
-		return this.hijoDerecho!=null;
-	}
+    @Override
+    public String toString() {
+        return this.getDato().toString();
+    }
 
-	public int contarHojas() {
-		return 0;
-	}
-	
+
+    public boolean tieneHijoIzquierdo() {
+        return this.hijoIzquierdo != null;
+    }
+
+
+    public boolean tieneHijoDerecho() {
+        return this.hijoDerecho != null;
+    }
+
+    public int contarHojas() {
+        if (this.esVacio()) {
+            return 0;
+        }
+        if (this.esHoja()) {
+            return 1;
+        }
+        int qHojas = 0;
+        if (this.tieneHijoIzquierdo()) {
+            qHojas += this.getHijoIzquierdo().contarHojas();
+        }
+        if (this.tieneHijoDerecho()) {
+            qHojas += this.getHijoDerecho().contarHojas();
+        }
+        return qHojas;
+    }
+
 
     public ArbolBinario<T> espejo() {
-		
-		return null;
-	}
+        return null;
+    }
 
 
-	public void entreNiveles(int n, int m){
-		
-	}
-
-	
-
+    public void entreNiveles(int n, int m) {
+    }
 }
