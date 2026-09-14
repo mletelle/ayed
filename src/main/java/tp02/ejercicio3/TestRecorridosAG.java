@@ -1,5 +1,6 @@
 package tp02.ejercicio3;
 
+import tp01.ejercicio2.ListaGenerica;
 import tp02.ArbolGeneral;
 
 public class TestRecorridosAG {
@@ -17,6 +18,25 @@ public class TestRecorridosAG {
         h2.agregarHijo(h4);
         h2.agregarHijo(h5);
         h3.agregarHijo(h6);
-
+        RecorridosAG recorridos = new RecorridosAG();
+        ListaGenerica<Integer> preorden = recorridos.numerosImparesMayoresQuePreOrden(raiz, 6);
+        while (!preorden.fin()) {
+            System.out.println(preorden.proximo());
+        }
+        System.out.println("-----");
+        ListaGenerica<Integer> inorden = recorridos.numerosImparesMayoresQueInOrden(raiz, 6);
+        while (!inorden.fin()) {
+            System.out.println(inorden.proximo());
+        }
+        System.out.println("-----");
+        ListaGenerica<Integer> postorden = recorridos.numerosImparesMayoresQuePostOrden(raiz, 6);
+        while (!postorden.fin()) {
+            System.out.println(postorden.proximo());
+        }
+        System.out.println("-----");
+        ListaGenerica<Integer> niveles = recorridos.numerosImparesMayoresQuePorNiveles(raiz, 6);
+        while (!niveles.fin()) {
+            System.out.println(niveles.proximo());
+        }
     }
 }

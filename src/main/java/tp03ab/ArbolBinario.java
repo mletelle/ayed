@@ -99,7 +99,17 @@ public class ArbolBinario<T> {
 
 
     public ArbolBinario<T> espejo() {
-        return null;
+        if (this.esVacio()) {
+            return new ArbolBinario<T>();
+        }
+        ArbolBinario<T> arbolEspejo = new ArbolBinario<T>(this.getDato());
+        if (this.tieneHijoDerecho()) {
+            arbolEspejo.agregarHijoIzquierdo(this.getHijoDerecho().espejo());
+        }
+        if (this.tieneHijoIzquierdo()) {
+            arbolEspejo.agregarHijoDerecho(this.getHijoIzquierdo().espejo());
+        }
+        return arbolEspejo;
     }
 
 
