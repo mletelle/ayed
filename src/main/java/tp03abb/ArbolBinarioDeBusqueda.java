@@ -1,11 +1,9 @@
 package tp03abb;
 
-import tp03ab.ArbolBinario;
-
 public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     private T dato;
-    private ArbolBinario<T> hijoIzquierdo;
-    private ArbolBinario<T> hijoDerecho;
+    private ArbolBinarioDeBusqueda<T> hijoIzquierdo;
+    private ArbolBinarioDeBusqueda<T> hijoDerecho;
 
 
     public ArbolBinarioDeBusqueda() {
@@ -109,12 +107,11 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
     public boolean esVacio() {
-        return this.getDato() == null && !this.tieneHijoIzquierdo() && !this.tieneHijoDerecho();
+        return this.dato == null && this.esHoja();
     }
 
     public boolean esHoja() {
-        return (!this.tieneHijoIzquierdo() && !this.tieneHijoDerecho());
-
+        return this.hijoIzquierdo == null && this.hijoDerecho == null;
     }
 
 
