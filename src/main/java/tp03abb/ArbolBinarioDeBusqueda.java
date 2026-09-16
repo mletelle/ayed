@@ -1,6 +1,7 @@
 package tp03abb;
 
 public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
+
     private T dato;
     private ArbolBinarioDeBusqueda<T> hijoIzquierdo;
     private ArbolBinarioDeBusqueda<T> hijoDerecho;
@@ -14,10 +15,12 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         this.dato = dato;
     }
 
+
     /*
      * getters y setters
      *
      */
+
     public T getDato() {
         return dato;
     }
@@ -25,6 +28,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     public void setDato(T dato) {
         this.dato = dato;
     }
+
 
     /**
      * Preguntar antes de invocar si tieneHijoIzquierdo()
@@ -37,18 +41,15 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
     public ArbolBinarioDeBusqueda<T> getHijoDerecho() {
         return this.hijoDerecho;
-
     }
+
 
     private void setHijoIzquierdo(ArbolBinarioDeBusqueda<T> hijo) {
         this.hijoIzquierdo = hijo;
-
     }
-
 
     private void setHijoDerecho(ArbolBinarioDeBusqueda<T> hijo) {
         this.hijoDerecho = hijo;
-
     }
 
 
@@ -57,62 +58,111 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
 
-    public ArbolBinarioDeBusqueda<T> buscar(Comparable<T> x, ArbolBinarioDeBusqueda<T> arbol) {
+    public ArbolBinarioDeBusqueda<T> buscar(
+            Comparable<T> x,
+            ArbolBinarioDeBusqueda<T> arbol) {
+
         if (arbol != null) {
+
             if (x.compareTo(arbol.getDato()) < 0) {
-                arbol = this.buscar(x, arbol.getHijoIzquierdo());
+
+                arbol = this.buscar(
+                        x,
+                        arbol.getHijoIzquierdo()
+                );
+
             } else if (x.compareTo(arbol.getDato()) > 0) {
-                arbol = this.buscar(x, arbol.getHijoDerecho());
-            } else
-                ; // Se encontro el dato, asi que es arbol
+
+                arbol = this.buscar(
+                        x,
+                        arbol.getHijoDerecho()
+                );
+            }
+
             return arbol;
+
         } else {
+
             return null;
         }
     }
 
+
     public void agregar(Comparable<T> dato) {
         // TO DO
-
     }
 
-    private void agregar(Comparable<T> dato, ArbolBinarioDeBusqueda<T> arbol) {
+
+    private void agregar(
+            Comparable<T> dato,
+            ArbolBinarioDeBusqueda<T> arbol) {
+
         // TO DO
-
     }
 
-    public ArbolBinarioDeBusqueda<T> buscarMayorDeLosMenores(ArbolBinarioDeBusqueda<T> arbol) {
-        // TO DO
-        return null;
-    }
 
-    public ArbolBinarioDeBusqueda<T> buscarMayor(ArbolBinarioDeBusqueda<T> arbol) {
-        // TO DO
-        return null;
-    }
+    public ArbolBinarioDeBusqueda<T> buscarMayorDeLosMenores(
+            ArbolBinarioDeBusqueda<T> arbol) {
 
-    public ArbolBinarioDeBusqueda<T> buscarMenorDeLosMayores(ArbolBinarioDeBusqueda<T> arbol) {
         // TO DO
         return null;
     }
 
-    public ArbolBinarioDeBusqueda<T> buscarMenor(ArbolBinarioDeBusqueda<T> arbol) {
+
+    public ArbolBinarioDeBusqueda<T> buscarMayor(
+            ArbolBinarioDeBusqueda<T> arbol) {
+
         // TO DO
         return null;
     }
+
+
+    public ArbolBinarioDeBusqueda<T> buscarMenorDeLosMayores(
+            ArbolBinarioDeBusqueda<T> arbol) {
+
+        // TO DO
+        return null;
+    }
+
+
+    public ArbolBinarioDeBusqueda<T> buscarMenor(
+            ArbolBinarioDeBusqueda<T> arbol) {
+
+        // TO DO
+        return null;
+    }
+
 
     @Override
     public String toString() {
+
+        if (this.esVacio()) {
+            return "";
+        }
+
         return this.getDato().toString();
     }
 
+
     public boolean esVacio() {
-        return this.dato == null && this.esHoja();
+        return this.getDato() == null
+                && !this.tieneHijoIzquierdo()
+                && !this.tieneHijoDerecho();
     }
+
 
     public boolean esHoja() {
-        return this.hijoIzquierdo == null && this.hijoDerecho == null;
+        return !this.tieneHijoIzquierdo()
+                && !this.tieneHijoDerecho();
     }
 
 
+    public boolean tieneHijoIzquierdo() {
+        return this.hijoIzquierdo != null;
+    }
+
+
+    public boolean tieneHijoDerecho() {
+        return this.hijoDerecho != null;
+    }
 }

@@ -1,4 +1,6 @@
-package tp03ab;
+package tp03.ejercicio2;
+
+import tp03ab.ArbolBinario;
 
 public class TestArbolBinario {
     public static void main(String[] args) {
@@ -27,5 +29,6 @@ public class TestArbolBinario {
         espejo.entreNiveles(0, 3);
         System.out.println("-----");
         raiz.entreNiveles(0, 3);
+
     }
 }
