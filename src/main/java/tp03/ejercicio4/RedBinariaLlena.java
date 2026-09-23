@@ -14,7 +14,7 @@ public class RedBinariaLlena {
     }
 
     private int calcularRetardo(ArbolBinario<Integer> arbol) {
-        if (arbol == null && arbol.esVacio()) return 0;
+        if (arbol == null || arbol.esVacio()) return 0;
         if (arbol.esHoja()) return arbol.getDato();
         int retIzquierdo = 0;
         int retDerecho = 0;
