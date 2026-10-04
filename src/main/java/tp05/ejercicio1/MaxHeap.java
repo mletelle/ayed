@@ -3,6 +3,7 @@ package tp05.ejercicio1;
 import tp01.ejercicio2.ListaGenerica;
 
 public class MaxHeap<T extends Comparable<T>> implements ColaPrioridades<T> {
+
     private T[] datos;
     private int cantEltos;
 
@@ -12,11 +13,22 @@ public class MaxHeap<T extends Comparable<T>> implements ColaPrioridades<T> {
     }
 
     public MaxHeap(ListaGenerica<T> lista) {
-        this.datos = (T[]) new Comparable[100];
+        if (lista == null) {
+            throw new IllegalArgumentException("Lista null");
+        }
+        int capacidad = 100;
+        if (lista.tamanio() > capacidad) {
+            capacidad = lista.tamanio();
+        }
+        this.datos = (T[]) new Comparable[capacidad];
         this.cantEltos = 0;
         lista.comenzar();
         while (!lista.fin()) {
-            this.datos[this.cantEltos] = lista.proximo();
+            T elemento = lista.proximo();
+            if (elemento == null) {
+                throw new IllegalArgumentException("Null");
+            }
+            this.datos[this.cantEltos] = elemento;
             cantEltos++;
         }
         for (int i = cantEltos / 2 - 1; i >= 0; i--) {
@@ -69,6 +81,11 @@ public class MaxHeap<T extends Comparable<T>> implements ColaPrioridades<T> {
     }
 
     public void imprimir() {
+        if (!this.esVacia()) {
+            for (int i = 0; i < cantEltos; i++) {
+                System.out.print(datos[i].toString() + ", ");
+            }
+        }
     }
 
     @Override
@@ -76,16 +93,20 @@ public class MaxHeap<T extends Comparable<T>> implements ColaPrioridades<T> {
         return cantEltos == 0;
     }
 
-
     @Override
     public void eliminar() {
-
+        if (this.esVacia()) {
+            return;
+        }
+        cantEltos--;
+        datos[0] = datos[cantEltos];
+        datos[cantEltos] = null;
+        percolate_down(0);
     }
 
     @Override
     public T tope() {
-        return null;
+        return datos[0];// si vacio null igualmente porque el arreglo esta inicializado
     }
-
 
 }
