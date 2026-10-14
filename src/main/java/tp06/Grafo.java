@@ -1,6 +1,6 @@
 package tp06;
 
-import tp01.ListaGenerica;
+import tp01.ejercicio2.*;
 
 
 /**
@@ -103,6 +103,6 @@ public interface Grafo<T> {
 	 * @param posicion
 	 * @return
 	 */
-	public Vertice<T> vetice(int posicion);
+	public Vertice<T> vertice(int posicion);
 
 }
